@@ -1,10 +1,13 @@
 #!/bin/bash
 
-# Assign the filename
-filename="bonds.lammpsdumpbonds"
+# SED Parser for topology output from LAMMPS
+# Author: Pranjal Singh, Penn State University (pranjal.officemail@gmail.com)
+# Date: 08/07/2020
+
+filename="bonds.lammpsdump"
 suffix=".bkp"
 backup="$filename$suffix"
-cp $filename $backup
+cp -n $filename $backup
 
 c1was='c_1\[1\]'
 c1is='atom1'
@@ -23,3 +26,5 @@ sed -i "s/$search/$replace/" $filename
 search=$c3was
 replace=$c3is
 sed -i "s/$search/$replace/" $filename
+
+exit 0
